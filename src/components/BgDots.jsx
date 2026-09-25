@@ -16,12 +16,12 @@ export default function BgDots() {
 
     const seed = () => {
       W = window.innerWidth;
-      H = window.innerHeight;
+      H = cv.clientHeight || window.innerHeight; // 100lvh in CSS: stable while the mobile URL bar moves
       cv.width = W * dpr;
       cv.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       D = [];
-      const n = Math.round((W * H) / 1300);
+      const n = Math.round((W * H) / (W < 700 ? 1800 : 1300));
       for (let i = 0; i < n; i++) {
         const g = Math.random() < 0.78;
         D.push({
@@ -57,7 +57,9 @@ export default function BgDots() {
     const redraw = () => {
       if (!raf) raf = requestAnimationFrame(draw);
     };
+    // mobile browsers fire resize when the URL bar shows/hides; skip reseeding when nothing changed
     const onResize = () => {
+      if (window.innerWidth === W && (cv.clientHeight || window.innerHeight) === H) return;
       seed();
       redraw();
     };
