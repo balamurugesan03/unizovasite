@@ -1,6 +1,7 @@
 :root{
   --bg:#07060f; --bg2:#0c0a1a; --card:#16161c; --card-b:#2a2a33;
   --green:#39e04a; --green2:#22b832; --text:#ffffff; --muted:#b9b9c4; --dim:#7d7d8a;
+  --gutter:clamp(16px,4.5vw,96px);
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
@@ -40,7 +41,7 @@ body::before{
 }
 #bgdots{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:0;pointer-events:none}
 a{color:inherit;text-decoration:none}
-.wrap{position:relative;z-index:1;width:min(1200px,92%);margin:0 auto;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.wrap{position:relative;z-index:1;width:100%;margin:0;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
 img,svg,canvas{max-width:100%}
 h1,h2,h3,h4{overflow-wrap:break-word;text-wrap:balance}
 a:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:3px}
@@ -65,7 +66,7 @@ header{position:relative;z-index:5;padding:26px 0}
 .burger.open span:nth-child(3){top:21px;transform:rotate(-45deg)}
 
 /* HERO */
-.hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:40px;padding:50px 0 60px;min-height:420px}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:40px;padding-top:50px;padding-bottom:60px;min-height:420px}
 .eyebrow{display:flex;align-items:center;gap:10px;color:var(--green);font-size:12.5px;margin-bottom:14px}
 .eyebrow::before{content:"";width:18px;height:1.5px;background:var(--green)}
 .hero h1{font-size:clamp(34px,5vw,56px);font-weight:400;line-height:1.1;letter-spacing:-.5px}
@@ -170,7 +171,7 @@ footer{position:relative;z-index:1;padding-top:30px}
 .mark3d .stage{position:absolute;inset:6%;transform-style:preserve-3d;transform:rotateY(-18deg) rotateX(8deg);will-change:transform}
 .mark3d .ul{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .mark3d .front{transform:translateZ(1px)}
-.mark3d canvas.dots{position:absolute;left:-45%;top:-40%;width:190%!important;height:180%!important;z-index:-1;pointer-events:none}
+.mark3d canvas.dots{max-width:none;position:absolute;left:-45%;top:-40%;width:190%!important;height:180%!important;z-index:-1;pointer-events:none}
 .hero,.about{overflow:visible}
 .hero-mark{position:relative}
 .mark3d .umark{width:100%;filter:none;animation:float 6s ease-in-out infinite}
@@ -180,6 +181,60 @@ footer{position:relative;z-index:1;padding-top:30px}
 @keyframes drift{from{transform:translateX(-2%)}to{transform:translateX(2%)}}
 
 /* ---------- RESPONSIVE ---------- */
+/* wide desktops: scale content up so the full-width layout stays balanced */
+@media (min-width:1440px){
+  header{padding:32px 0}
+  .logo svg{width:170px}
+  .nav ul{gap:44px}
+  .nav ul a{font-size:12.5px}
+  .hero{padding-top:70px;padding-bottom:80px;min-height:520px;gap:60px}
+  .hero h1{font-size:clamp(56px,4.2vw,84px)}
+  .eyebrow,.about .kicker{font-size:14px}
+  .btn{font-size:14px;padding:15px 24px}
+  .mark3d{width:min(560px,100%)}
+  .mark3d.sm{width:min(440px,85%)}
+  .band{padding:140px 0 100px}
+  .band h2{font-size:clamp(42px,3.2vw,60px)}
+  .pill{font-size:13.5px;padding:11px 24px}
+  .sec{padding:90px 0}
+  .sec h3{font-size:clamp(28px,2.2vw,40px);margin-bottom:42px}
+  .grid3{gap:24px}
+  .svc{padding:32px 28px 34px;min-height:180px}
+  .svc .ic{width:32px;height:32px}
+  .svc h4{font-size:18px}
+  .svc p{font-size:13.5px}
+  .about{gap:70px}
+  .about p{font-size:15px;max-width:620px}
+  .stats b{font-size:42px}
+  .stats span{font-size:14.5px}
+  .chips{gap:20px}
+  .chip{font-size:14px;padding:15px 12px}
+  .cases{gap:32px}
+  .case .img{height:clamp(340px,24vw,520px)}
+  .case p{font-size:17px}
+  .logos{gap:14px}
+  .lg{height:96px}
+  .cta{padding:48px 56px}
+  .cta h4{font-size:clamp(23px,1.8vw,32px)}
+  .cta p,.cta .btn{font-size:13.5px}
+  .big{font-size:clamp(82px,7.2vw,150px)}
+  .fgrid{gap:60px}
+  .fgrid p,.fgrid li a{font-size:13.5px}
+  .fgrid p{max-width:380px}
+  .fgrid h5{font-size:16px}
+  .tags span{font-size:12px}
+  .copy{font-size:12.5px}
+}
+@media (min-width:2200px){
+  .hero h1{font-size:clamp(84px,3.8vw,110px)}
+  .mark3d{width:min(720px,100%)}
+  .mark3d.sm{width:min(560px,85%)}
+  .svc h4{font-size:21px}
+  .svc p{font-size:15px}
+  .about p{font-size:17px;max-width:760px}
+  .chip{font-size:16px}
+  .lg{height:120px}
+}
 @media (max-width:1024px){
   .nav ul{gap:22px}
   .stats{gap:48px}
@@ -190,12 +245,12 @@ footer{position:relative;z-index:1;padding-top:30px}
   .logo svg{width:132px}
   .nav ul{display:none}
   .burger{display:block}
-  .nav ul.open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:20;background:rgba(20,20,27,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid #2a2a33;border-radius:12px;padding:8px;gap:0;box-shadow:0 18px 40px rgba(0,0,0,.5);animation:menuIn .2s ease-out}
+  .nav ul.open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);left:var(--gutter);right:var(--gutter);z-index:20;background:rgba(20,20,27,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid #2a2a33;border-radius:12px;padding:8px;gap:0;box-shadow:0 18px 40px rgba(0,0,0,.5);animation:menuIn .2s ease-out}
   .nav ul.open a{display:block;padding:14px 16px;font-size:13px;border-radius:8px}
   .nav ul.open li+li{border-top:1px solid #1f1f28}
   .nav ul.open a:active{background:#1e2a20}
 
-  .hero{grid-template-columns:1fr;gap:10px;padding:10px 0 50px;min-height:0;text-align:center}
+  .hero{grid-template-columns:1fr;gap:10px;padding-top:10px;padding-bottom:50px;min-height:0;text-align:center}
   .hero .eyebrow{justify-content:center}
   .hero .btns{justify-content:center}
   .hero-mark{order:-1}
@@ -215,10 +270,13 @@ footer{position:relative;z-index:1;padding-top:30px}
   .fgrid p{max-width:460px}
   .cta{padding:30px 28px}
 }
+@media (min-width:601px) and (max-width:900px){
+  .logos{grid-template-columns:repeat(5,1fr)}
+  .case .img{height:220px}
+}
 @keyframes menuIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
 @media (max-width:600px){
-  .wrap{width:auto;margin:0 16px}
   .hero{padding-bottom:40px}
   .hero h1{font-size:clamp(32px,10vw,44px)}
   .hero .btns{flex-direction:column;align-items:stretch;gap:12px;margin-top:30px}
@@ -270,7 +328,7 @@ footer{position:relative;z-index:1;padding-top:30px}
   .copy div{gap:20px}
 }
 @media (max-width:360px){
-  .wrap{margin:0 14px}
+  :root{--gutter:14px}
   .logo svg{width:118px}
   .fgrid{grid-template-columns:1fr}
   .chip{font-size:12px}
