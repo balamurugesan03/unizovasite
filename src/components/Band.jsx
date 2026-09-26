@@ -1,6 +1,6 @@
 export default function Band() {
   return (
-    <section className="band">
+    <section className="band" data-scroll>
       <svg className="wave" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="w1" x1="0" x2="1">
@@ -33,12 +33,12 @@ export default function Band() {
         </g>
       </svg>
       <div className="wrap">
-        <h2>
+        <h2 data-fx="blur">
           Transform Your Business with
           <br />
           <span className="g">Unizova Intelligent Automation</span>
         </h2>
-        <a href="#services" className="pill">Explore Our AI Solutions</a>
+        <a href="#services" className="pill" data-fx="pop">Explore Our AI Solutions</a>
       </div>
     </section>
   );

@@ -10,10 +10,14 @@ import Cases from './components/Cases';
 import Collaborators from './components/Collaborators';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import useScrollFx from './components/useScrollFx';
 
 export default function App() {
+  useScrollFx();
+
   return (
     <>
+      <div className="scroll-progress" aria-hidden="true" />
       <BgDots />
       <Sprite />
       <Header />

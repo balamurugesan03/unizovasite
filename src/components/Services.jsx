@@ -4,12 +4,12 @@ export default function Services() {
   return (
     <section className="sec" id="services">
       <div className="wrap">
-        <h3>
+        <h3 data-fx="left">
           Services to Help You Succeed
           <br />
           in Your Mission!
         </h3>
-        <div className="grid3">
+        <div className="grid3" data-stagger="flip">
           {SERVICES.map((name) => (
             <div className="svc" key={name}>
               <svg className="ic">

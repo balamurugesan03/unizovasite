@@ -2,7 +2,7 @@ export default function Contact() {
   return (
     <section id="contact">
       <div className="wrap">
-        <div className="cta">
+        <div className="cta" data-fx="rise">
           <div>
             <h4>
               Transform Your Business with
@@ -13,7 +13,7 @@ export default function Contact() {
           </div>
           <a href="#contact" className="btn">Let&apos;s Talk</a>
         </div>
-        <div className="big" aria-hidden="true">
+        <div className="big" aria-hidden="true" data-scroll>
           <span>DESIGN</span>
           <span>DEVELOP</span>
           <span>DOMINATE</span>

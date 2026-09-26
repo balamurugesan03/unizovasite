@@ -5,18 +5,17 @@ export default function Hero() {
   return (
     <div className="wrap hero">
       <div>
-        <div className="eyebrow">AI Software &amp; Automation Studio</div>
-        <h1>
-          Build Smarter.
-          <br />
-          Automate Faster.
+        <div className="eyebrow" data-fx="left">AI Software &amp; Automation Studio</div>
+        <h1 data-fx="mask">
+          <span className="line"><span>Build Smarter.</span></span>
+          <span className="line"><span>Automate Faster.</span></span>
         </h1>
-        <div className="btns">
+        <div className="btns" data-stagger="up">
           <a href="#contact" className="btn">Book a Strategy Call <Arrow /></a>
           <a href="#contact" className="btn">Have a Chat <Arrow /></a>
         </div>
       </div>
-      <div className="hero-mark">
+      <div className="hero-mark" data-fx="zoom" data-scroll>
         <UMark3D label="Unizova 3D logo" />
       </div>
     </div>

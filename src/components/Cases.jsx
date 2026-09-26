@@ -2,7 +2,7 @@ export default function Cases() {
   return (
     <section className="sec" id="cases" style={{ paddingTop: 30 }}>
       <div className="wrap">
-        <div className="head-row">
+        <div className="head-row" data-fx="blur">
           <h3>
             Check Out Our
             <br />
@@ -10,10 +10,10 @@ export default function Cases() {
           </h3>
           <a href="#cases" className="pill" style={{ marginTop: 0 }}>Explore Our Projects</a>
         </div>
-        <div className="cases">
+        <div className="cases" data-stagger="wipe">
           <div className="case">
             <figure>
-              <div className="img dizad">
+              <div className="img dizad" data-scroll>
                 <div className="tree" style={{ left: '2%' }} />
                 <div className="bldg" />
                 <div className="tree" style={{ right: '2%' }} />
@@ -23,7 +23,7 @@ export default function Cases() {
           </div>
           <div className="case">
             <figure>
-              <div className="img rahan">
+              <div className="img rahan" data-scroll>
                 <div className="wall" />
                 <div className="water" />
                 <div className="plants" />

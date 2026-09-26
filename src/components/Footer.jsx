@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="wrap">
-        <div className="fgrid">
+        <div className="fgrid" data-stagger="up">
           <div>
             <div className="logo" role="img" aria-label="Unizova Technologies">
               <svg viewBox="0 0 472 124">
@@ -32,7 +32,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="tags">
+        <div className="tags" data-stagger="fade">
           {TAGS.map((t) => <span key={t}>{t}</span>)}
         </div>
         <div className="copy">

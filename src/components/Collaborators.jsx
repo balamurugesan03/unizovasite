@@ -2,12 +2,12 @@ export default function Collaborators() {
   return (
     <section className="sec">
       <div className="wrap">
-        <h3>
+        <h3 data-fx="right">
           Our Esteemed
           <br />
           Collaborators Worldwide!
         </h3>
-        <div className="logos">
+        <div className="logos" data-stagger="tilt">
           <div className="lg" style={{ color: '#6aa832', fontSize: 22 }}>🌿 Raihan</div>
           <div className="lg" style={{ color: '#c2272d', fontSize: 14, fontWeight: 500 }}>✿<br />By Design</div>
           <div className="lg" style={{ color: '#1f2a44', fontSize: 22, letterSpacing: 3 }}>ASAS</div>

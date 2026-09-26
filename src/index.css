@@ -339,3 +339,61 @@ footer{position:relative;z-index:1;padding-top:30px}
 @media (hover:none){
   .svc:hover{transform:none}
 }
+
+/* ---------- SCROLL EFFECTS (see components/useScrollFx.js) ---------- */
+.scroll-progress{position:fixed;left:0;top:0;z-index:50;width:100%;height:3px;pointer-events:none;background:linear-gradient(90deg,var(--green2),var(--green),#b6ff7a);box-shadow:0 0 12px rgba(57,224,74,.7);transform-origin:0 50%;scale:var(--sp,0) 1}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .line>span{display:block}
+.stats b{font-variant-numeric:tabular-nums}
+.grid3{perspective:1200px}
+
+/* hidden until revealed (only when JS enabled the effects) */
+.fx [data-fx]:not(.in){opacity:0}
+.fx [data-fx="mask"]:not(.in){opacity:1}
+.fx [data-fx="mask"]:not(.in) .line>span{translate:0 110%}
+.fx [data-fx].in{animation:var(--fx-name) var(--fx-dur,.9s) var(--fx-ease,cubic-bezier(.2,.75,.2,1)) calc(var(--i,0) * var(--fx-step,90ms)) both}
+.fx [data-fx="mask"].in{animation:none}
+.fx [data-fx="mask"].in .line>span{animation:fx-mask 1s cubic-bezier(.7,0,.2,1) both}
+.fx [data-fx="mask"].in .line:nth-child(2)>span{animation-delay:.14s}
+
+[data-fx="up"]{--fx-name:fx-up}
+[data-fx="left"]{--fx-name:fx-left}
+[data-fx="right"]{--fx-name:fx-right}
+[data-fx="fade"]{--fx-name:fx-fade;--fx-step:40ms}
+[data-fx="blur"]{--fx-name:fx-blur;--fx-dur:1.1s}
+[data-fx="zoom"]{--fx-name:fx-zoom;--fx-dur:1.3s}
+[data-fx="spin"]{--fx-name:fx-spin;--fx-dur:1.4s}
+[data-fx="pop"]{--fx-name:fx-pop;--fx-dur:.7s;--fx-step:70ms;--fx-ease:cubic-bezier(.34,1.56,.64,1)}
+[data-fx="flip"]{--fx-name:fx-flip;--fx-dur:1s;--fx-step:110ms;transform-origin:50% 0}
+[data-fx="wipe"]{--fx-name:fx-wipe;--fx-dur:1.2s;--fx-step:180ms;--fx-ease:cubic-bezier(.77,0,.18,1)}
+[data-fx="tilt"]{--fx-name:fx-tilt;--fx-dur:.8s;--fx-step:60ms}
+[data-fx="rise"]{--fx-name:fx-rise;--fx-dur:1.1s}
+
+@keyframes fx-up{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+@keyframes fx-left{from{opacity:0;translate:-70px 0}to{opacity:1;translate:0 0}}
+@keyframes fx-right{from{opacity:0;translate:70px 0}to{opacity:1;translate:0 0}}
+@keyframes fx-fade{from{opacity:0}to{opacity:1}}
+@keyframes fx-blur{from{opacity:0;filter:blur(14px);scale:1.12;letter-spacing:.08em}to{opacity:1;filter:blur(0);scale:1;letter-spacing:normal}}
+@keyframes fx-zoom{from{opacity:0;scale:.55;filter:blur(8px)}to{opacity:1;scale:1;filter:blur(0)}}
+@keyframes fx-spin{from{opacity:0;scale:.7;rotate:y 90deg}to{opacity:1;scale:1;rotate:y 0deg}}
+@keyframes fx-pop{from{opacity:0;scale:.4}to{opacity:1;scale:1}}
+@keyframes fx-flip{from{opacity:0;rotate:x -75deg;translate:0 30px}to{opacity:1;rotate:x 0deg;translate:0 0}}
+@keyframes fx-wipe{from{opacity:1;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes fx-tilt{from{opacity:0;translate:0 50px;rotate:-14deg;scale:.8}to{opacity:1;translate:0 0;rotate:0deg;scale:1}}
+@keyframes fx-rise{from{opacity:0;translate:0 80px;scale:.92}to{opacity:1;translate:0 0;scale:1}}
+@keyframes fx-mask{from{translate:0 110%}to{translate:0 0}}
+
+/* scroll-linked (driven by --p) */
+.fx .hero-mark[data-scroll]{translate:0 calc(var(--p,0) * 90px)}
+.fx .band[data-scroll] svg.wave{translate:0 calc((var(--p,.5) - .5) * 80px);scale:1 calc(.7 + var(--p,.5) * .6)}
+.fx .case .img[data-scroll]{scale:calc(1.18 - var(--p,0) * .2)}
+.fx .big[data-scroll] span{
+  background:linear-gradient(90deg,var(--green) 0 var(--fill),transparent var(--fill));
+  -webkit-background-clip:text;background-clip:text;
+  --fill:clamp(0%,calc((var(--p,0) * 2.4 - .7) * 100%),100%)}
+.fx .big[data-scroll] span:nth-child(1){translate:calc((var(--p,.5) - .5) * -160px) 0}
+.fx .big[data-scroll] span:nth-child(3){translate:calc((var(--p,.5) - .5) * 160px) 0}
+@media (max-width:600px){
+  .fx .big[data-scroll] span:nth-child(1),.fx .big[data-scroll] span:nth-child(3){translate:calc((var(--p,.5) - .5) * -60px) 0}
+  .fx .big[data-scroll] span:nth-child(2){translate:calc((var(--p,.5) - .5) * 60px) 0}
+}
